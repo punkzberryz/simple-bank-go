@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-type Accounts struct {
+type Account struct {
 	ID        int64     `json:"id"`
 	Owner     string    `json:"owner"`
 	Balance   int64     `json:"balance"`
@@ -16,7 +16,7 @@ type Accounts struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
-type Entries struct {
+type Entry struct {
 	ID        int64 `json:"id"`
 	AccountID int64 `json:"accountId"`
 	// can be negative or positive
@@ -24,7 +24,7 @@ type Entries struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
-type Transfers struct {
+type Transfer struct {
 	ID            int64 `json:"id"`
 	FromAccountID int64 `json:"fromAccountId"`
 	ToAccountID   int64 `json:"toAccountId"`
