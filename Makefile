@@ -23,6 +23,9 @@ sqlc:
 test:
 	go test -v -cover ./...
 
+server:
+	go run main.go
+
 stop_containers:
 	@echo "Stopping other docker container"
 	if [ $$(docker ps -q) ]; then \
