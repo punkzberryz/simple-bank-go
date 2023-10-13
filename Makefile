@@ -34,3 +34,5 @@ stop_containers:
 	else \
 		echo "no containers running..."; \
 	fi
+mock:
+	mockgen -package mockdb -destination db/mock/store.go github.com/punkzberryz/simplebank/db/sqlc Store

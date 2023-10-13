@@ -7,13 +7,14 @@ import (
 )
 
 type Store interface {
+	Querier
 	TransferTx(ctx context.Context, arg TransferTxParam) (TransferTxResult, error)
 }
 
 // Store provies all the functions to execute db queries and tx
 type SQLStore struct {
-	*Queries
 	db *sql.DB
+	*Queries
 }
 
 func NewStore(db *sql.DB) Store {
