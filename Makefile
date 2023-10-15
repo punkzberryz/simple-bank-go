@@ -9,13 +9,19 @@ dropdb:
 	docker exec -it ${DB_DOCKER_CONTAINER} dropdb ${DB_NAME}
 
 migrate_create:
-	migrate create -ext sql -dir db/migration -seq init_schema
+	migrate create -ext sql -dir db/migration -seq init_schema	
 
 migrate_up:
 	migrate -path db/migration -database "postgresql://${USER}:${PASSWORD}@${HOST}:5432/${DB_NAME}?sslmode=disable" -verbose up
 
+migrate_up1:
+	migrate -path db/migration -database "postgresql://${USER}:${PASSWORD}@${HOST}:5432/${DB_NAME}?sslmode=disable" -verbose up 1
+
 migrate_down:
 	migrate -path db/migration -database "postgresql://${USER}:${PASSWORD}@${HOST}:5432/${DB_NAME}?sslmode=disable" -verbose down
+
+migrate_down1:
+	migrate -path db/migration -database "postgresql://${USER}:${PASSWORD}@${HOST}:5432/${DB_NAME}?sslmode=disable" -verbose down 1
 
 sqlc:
 	sqlc generate
@@ -36,3 +42,5 @@ stop_containers:
 	fi
 mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/punkzberryz/simplebank/db/sqlc Store
+git-pull:
+	git fetch && git pull
