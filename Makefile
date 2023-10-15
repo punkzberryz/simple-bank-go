@@ -42,5 +42,6 @@ stop_containers:
 	fi
 mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/punkzberryz/simplebank/db/sqlc Store
+		
 git-pull:
 	git fetch && git pull
